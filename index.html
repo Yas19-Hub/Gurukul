@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GURUKUL - Teacher Channels</title>
+     <link rel="stylesheet" href="/Gurukul/index.css">
+</head>
+<body>
+    <header>
+        <h1>GURUKUL</h1>
+        <p>Connect with teachers </p>
+    </header>
+    
+    <nav>
+        <a href="#" class="active" onclick="showPage('home')">Home</a>
+        <a href="#" onclick="showPage('student-signup')">Student Signup</a>
+        <a href="#" onclick="showPage('teacher-login')">Teacher Portal</a>
+        <a href="#" onclick="showPage('browse-channels')">Browse Channels</a>
+        <a href="#" onclick="showPage('earning')">Earning</a>
+    </nav>
+    
+    <main>
+        <!-- Home Page -->
+        <section id="home" class="page-section">
+            <div class="container">
+                <h2>WELCOME TO GURUKUL</h2>
+                <p>The platform where teachers can create their own educational channels and students can enroll to learn from their favorite teachers.</p>
+                
+                <div class="grid grid-3" style="margin-top: 2rem;">
+                    <div class="card">
+                        <h3>For Teachers</h3>
+                        <p>Create your own channel, organize your content, and connect with students eager to learn from you.</p>
+                        <button onclick="showPage('teacher-login')">Create Channel</button>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>For Students</h3>
+                        <p>Sign up and enroll in channels created by expert teachers in various subjects.</p>
+                        <button onclick="showPage('student-signup')">Sign Up Now</button>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>Browse Channels</h3>
+                        <p>Explore all available teacher channels categorized by subject and topic.</p>
+                        <button onclick="showPage('browse-channels')">Explore Channels</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="container">
+                <h2>Featured Channels</h2>
+                <div class="grid">
+                    <div class="card">
+                        <h3>Advanced Mathematics</h3>
+                        <p>by Prof. yash</p>
+                        <div>
+                            <span class="tag">Calculus</span>
+                            <span class="tag">Algebra</span>
+                            <span class="tag">Statistics</span>
+                        </div>
+                        <div class="card-footer">
+                            <span>42 Students Enrolled</span>
+                            <button onclick="enrollChannel(1)">Enroll Now</button>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>Web Development Mastery</h3>
+                        <p>prof.samarth</p>
+                        <div>
+                            <span class="tag">HTML/CSS</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">React</span>
+                        </div>
+                        <div class="card-footer">
+                            <span>86 Students Enrolled</span>
+                            <button onclick="enrollChannel(2)">Enroll Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Student Signup -->
+        <section id="student-signup" class="page-section hidden">
+            <div class="container">
+                <h2>Student Signup</h2>
+                <form id="studentSignupForm">
+                    <div class="form-group">
+                        <label for="studentName">Full Name</label>
+                        <input type="text" id="studentName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="studentEmail">Email Address</label>
+                        <input type="email" id="studentEmail" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="studentPassword">Password</label>
+                        <input type="password" id="studentPassword" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="studentGrade">Grade/Level</label>
+                        <select id="studentGrade" required>
+                            <option value="">Select your grade</option>
+                            <option value="elementary">Elementary School</option>
+                            <option value="middle">Middle School</option>
+                            <option value="high">High School</option>
+                            <option value="college">College/University</option>
+                            <option value="professional">Professional Development</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="studentInterests">Interests (Select all that apply)</label>
+                        <div>
+                            <input type="checkbox" id="math" name="interests" value="math">
+                            <label for="math">Mathematics</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="science" name="interests" value="science">
+                            <label for="science">Science</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="literature" name="interests" value="literature">
+                            <label for="literature">Literature & Language</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="technology" name="interests" value="technology">
+                            <label for="technology">Technology & Computing</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="business study" name="interests" value="arts">
+                            <label for="arts">business </label>
+                        </div>
+                    </div>
+                    
+                    <button type="button" onclick="registerStudent()">Sign Up</button>
+                </form>
+            </div>
+        </section>
+        
+        <!-- Teacher Login/Registration -->
+        <section id="teacher-login" class="page-section hidden">
+            <div class="container">
+                <h2>Teacher Portal</h2>
+                
+                <div class="tabs">
+                    <div class="tab active" onclick="switchTab('login', this)">Login</div>
+                    <div class="tab" onclick="switchTab('register', this)">Register</div>
+                </div>
+                
+                <div id="login" class="tab-content">
+                    <form id="teacherLoginForm">
+                        <div class="form-group">
+                            <label for="teacherLoginEmail">Email</label>
+                            <input type="email" id="teacherLoginEmail" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="teacherLoginPassword">Password</label>
+                            <input type="password" id="teacherLoginPassword" required>
+                        </div>
+                        
+                        <button type="button" onclick="loginTeacher()">Login</button>
+                    </form>
+                </div>
+                
+                <div id="register" class="tab-content hidden">
+                    <form id="teacherRegisterForm">
+                        <div class="form-group">
+                            <label for="teacherName">Full Name</label>
+                            <input type="text" id="teacherName" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="teacherEmail">Email Address</label>
+                            <input type="email" id="teacherEmail" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="teacherPassword">Password</label>
+                            <input type="password" id="teacherPassword" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="teacherqualification">qualification</label>
+                            <input type="text" id="teacherName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="teacherSubjects">Specialization/Subjects</label>
+                            <input type="text" id="teacherSubjects" placeholder="e.g. Mathematics, Physics, Literature" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="teacherBio">Bio/Introduction</label>
+                            <textarea id="teacherBio" rows="4" required></textarea>
+                        </div>
+                        
+                        <button type="button" onclick="registerTeacher()">Register</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div id="teacher-dashboard" class="container hidden">
+                <h2>Teacher Dashboard</h2>
+                <div id="teacherInfo"></div>
+                
+                <div class="container">
+                    <h3>Create New Channel</h3>
+                    <form id="createChannelForm">
+                        <div class="form-group">
+                            <label for="channelTitle">Channel Title</label>
+                            <input type="text" id="channelTitle" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="channelDescription">Description</label>
+                            <textarea id="channelDescription" rows="3" required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="channelCategory">Category</label>
+                            <select id="channelCategory" required>
+                                <option value="">Select category</option>
+                                <option value="mathematics">Mathematics</option>
+                                <option value="science">Science</option>
+                                <option value="language">Language & Literature</option>
+                                <option value="programming">Programming & Computer Science</option>
+                                <option value="arts">Arts & Creative Skills</option>
+                                <option value="history">History & Social Studies</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="channelTags">Tags (comma separated)</label>
+                            <input type="text" id="channelTags" placeholder="e.g. algebra, equations, mathematics">
+                        </div>
+                        
+                        <button type="button" onclick="createChannel()">Create Channel</button>
+                    </form>
+                </div>
+                
+                <div class="container">
+                    <h3>Your Channels</h3>
+                    <div id="teacherChannels" class="grid">
+                        <!-- Channels will be displayed here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Browse Channels -->
+        <section id="browse-channels" class="page-section hidden">
+            <div class="container">
+                <h2>Browse Teacher Channels</h2>
+                
+                <div class="form-group">
+                    <label for="searchChannels">Search Channels</label>
+                    <input type="text" id="searchChannels" placeholder="Search by title, teacher name, or subject...">
+                </div>
+                
+                <div class="form-group">
+                    <label>Filter by Category</label>
+                    <div>
+                        <button class="tag" onclick="filterCategory('all')">All</button>
+                        <button class="tag" onclick="filterCategory('mathematics')">Mathematics</button>
+                        <button class="tag" onclick="filterCategory('science')">Science</button>
+                        <button class="tag" onclick="filterCategory('language')">Language</button>
+                        <button class="tag" onclick="filterCategory('programming')">Programming</button>
+                        <button class="tag" onclick="filterCategory('python')">python</button>
+                        <button class="tag" onclick="filterCategory('data base')">business</button>
+                        <button class="tag" onclick="filterCategory('ai')">machinelearning</button>
+                    </div>
+                </div>
+                
+                <div id="channelsList" class="grid">
+                    <!-- Sample channels (will be dynamically generated) -->
+                    <div class="card" data-category="mathematics">
+                        <h3>Advanced Mathematics</h3>
+                        <p>by Prof. shivkumat</p>
+                        <p>A comprehensive course covering calculus, linear algebra, and statistics for advanced students.</p>
+                        <div>
+                            <span class="tag">Calculus</span>
+                            <span class="tag">Algebra</span>
+                            <span class="tag">Statistics</span>
+                        </div>
+                        <div class="card-footer">
+                            <span>42 Students Enrolled</span>
+                            <button onclick="enrollChannel(1)">Enroll Now</button>
+                        </div>
+                    </div>
+                    
+                    <div class="card" data-category="programming">
+                        <h3>Web Development Mastery</h3>
+                        <p>by prof. guru</p>
+                        <p>Learn modern web development with HTML, CSS, JavaScript, and popular frameworks.</p>
+                        <div>
+                            <span class="tag">HTML/CSS</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">React</span>
+                        </div>
+                        <div class="card-footer">
+                            <span>86 Students Enrolled</span>
+                            <button onclick="enrollChannel(2)">Enroll Now</button>
+                        </div>
+                    </div>
+                    
+                    <div class="card" data-category="science">
+                        <h3>Physics for Beginners</h3>
+                        <p>by Dr. Alan</p>
+                        <p>An introductory course to basic physics concepts with practical experiments.</p>
+                        <div>
+                            <span class="tag">Mechanics</span>
+                            <span class="tag">Electricity</span>
+                            <span class="tag">Energy</span>
+                        </div>
+                        <div class="card-footer">
+                            <span>35 Students Enrolled</span>
+                            <button onclick="enrollChannel(3)">Enroll Now</button>
+                        </div>
+                    </div>
+                    
+                    <div class="card" data-category="language">
+                        <h3>Creative Writing Workshop</h3>
+                        <p>by dr. Thompson</p>
+                        <p>Develop your storytelling abilities and learn techniques for fiction writing.</p>
+                        <div>
+                            <span class="tag">Fiction</span>
+                            <span class="tag">Storytelling</span>
+                            <span class="tag">Narrative</span>
+                        </div>
+                        <div class="card-footer">
+                            <span>29 Students Enrolled</span>
+                            <button onclick="enrollChannel(4)">Enroll Now</button>
+                        </div>
+                    </div>
+                    <div class="card" data-category="database">
+                        <h3>data base management system</h3>
+                        <p>by Prof. xyz</p>
+                        <p>A comprehensive course covering data base management system</p>
+                        <div>
+                            <span class="tag">Calculus</span>
+                            <span class="tag">Algebra</span>
+                            <span class="tag">Statistics</span>
+                        </div>
+                        <div class="card-footer">
+                            <span>42 Students Enrolled</span>
+                            <button onclick="enrollChannel(1)">Enroll Now</button>
+                        </div>
+                    </div>
+                    <div class="card" data-category="ai">
+                        <h3>machinelearning</h3>
+                        <p>by Prof. shivkumat</p>
+                        <p>A comprehensive course covering calculus, linear algebra, and statistics for advanced students.</p>
+                        <div>
+                            <span class="tag">Calculus</span>
+                            <span class="tag">Algebra</span>
+                            <span class="tag">Statistics</span>
+                        </div>
+                        <div class="card-footer">
+                            <span>42 Students Enrolled</span>
+                            <button onclick="enrollChannel(1)">Enroll Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+     <!-- Earning-->
+     <section id="home" class="page-section">
+        <div class="container">
+            <h2>earning</h2>
+            
+            <div class="grid grid-3" style="margin-top: 2rem;">
+                <div class="card">
+                    <h3>For Teachers</h3>
+                    <p>Create your own channel, organize your content, and connect with students eager to learn from you.</p>
+                    
+                </div>
+                
+            
+
+    <footer style="background-color: #2c3e50; color: white; text-align: center; padding: 1rem; margin-top: 2rem;">
+        <p>&copy; 2025 EduConnect - Connecting Teachers and Students</p>
+    </footer>
+    <script src="/Gurukul/script.js"></script>
+</body>
+</html>
